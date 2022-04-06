@@ -6,6 +6,11 @@ class Nuevo extends Controller {
         $this->view->render('nuevo/index');
         //echo "<p>Nuevo.construct()</p>";
     }
+
+    function regAlumno() {
+        echo "Alumno creado";
+        $this->model->insert();
+    }
 }
 
 ?>

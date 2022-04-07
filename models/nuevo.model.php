@@ -5,9 +5,16 @@ class NuevoModel extends Model {
         parent::__construct();
     }
 
-    public function insert() {
+    public function insert($datos) {
         // insertar datos en la DB
-        echo "Insertar datos";
+        try {
+            $query = $this->db->connect()->prepare('INSERT INTO alumnos (matricula, nombre, paterno) VALUES (:matricula, :nombre, :paterno)');
+            $query->execute(['matricula' => $datos['matricula'], 'nombre' => $datos['nombre'], 'paterno' => $datos['paterno']]);
+            return true;
+        } catch (PDOException $e) {
+            echo "Ya existe la matrícula";
+            return false;
+        }
     }
 }
 

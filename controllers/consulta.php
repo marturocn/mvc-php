@@ -3,8 +3,11 @@
 class Consulta extends Controller {
     function __construct() {
         parent::__construct();
-        $this->view->render('consulta/index');
         //echo "<p>Consulta.construct()</p>";
+    }
+
+    function render() {
+        $this->view->render('consulta/index');
     }
 }
 
